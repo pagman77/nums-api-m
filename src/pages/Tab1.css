@@ -1,0 +1,32 @@
+ion-grid {
+  height: 100%;
+  text-align: center;
+  font-family: museo_sans, "Lucida Grande", "Lucida Sans", "Helvetica",
+      sans-serif;
+  font-weight: bold;
+  text-shadow: #02273f 2px 2px 3px;
+}
+
+ion-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+ion-content {
+  --background: linear-gradient(rgba(30, 109, 160, 0.8) 0%, #1e6da0 20%),
+    url("../../public/assets/background.jpg");
+  margin: 0;
+
+}
+
+ion-content {
+  --background: url("../../public/assets/graph-paper-5-1.png");
+}
+
+ion-button {
+  color: #f0f3f5;
+  --background: #1170af;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}

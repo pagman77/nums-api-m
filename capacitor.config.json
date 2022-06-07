@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "NumbersAPI",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}

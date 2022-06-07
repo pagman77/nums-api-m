@@ -1,0 +1,7 @@
+{
+  "name": "NumbersAPI",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
