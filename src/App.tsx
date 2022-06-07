@@ -10,11 +10,11 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { schoolOutline, calendarNumberOutline, calendarClear, calculator, todayOutline  } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
-import Tab4 from './pages/Tab4';
+import { schoolOutline, calendarNumberOutline, calculator, todayOutline  } from 'ionicons/icons';
+import Math from './pages/Math';
+import Trivia from './pages/Trivia';
+import Date from './pages/Date';
+import Year from './pages/Year';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -43,37 +43,37 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/tab1">
-            <Tab1 />
+          <Route exact path="/math">
+            <Math />
           </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
+          <Route exact path="/trivia">
+            <Trivia />
           </Route>
-          <Route path="/tab3">
-            <Tab3 />
+          <Route path="/date">
+            <Date />
           </Route>
-          <Route path="/tab4">
-            <Tab4 />
+          <Route path="/year">
+            <Year />
           </Route>
           <Route exact path="/">
-            <Redirect to="/tab1" />
+            <Redirect to="/math" />
           </Route>
         </IonRouterOutlet>
-        
+
         <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
+          <IonTabButton tab="math" href="/math">
+          <IonIcon icon={calculator} />
+            <IonLabel>Math</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="trivia" href="/trivia">
             <IonIcon icon={schoolOutline} />
             <IonLabel>Trivia</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={calendarNumberOutline} />
+          <IonTabButton tab="date" href="/date">
+          <IonIcon icon={calendarNumberOutline} />
             <IonLabel>Date</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={calculator} />
-            <IonLabel>Math</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab4" href="/tab4">
+          <IonTabButton tab="year" href="/year">
             <IonIcon icon={todayOutline} />
             <IonLabel>Year</IonLabel>
           </IonTabButton>
