@@ -1,11 +1,17 @@
 
 interface IForm {
- number: number,
+ number: string,
 }
+
 interface IDateForm {
  day: number,
  month: number,
 
 }
 
-export { IForm, IDateForm };
+interface IFormDate {
+  day: string,
+  month: string
+}
+
+export { IForm, IDateForm, IFormDate };
