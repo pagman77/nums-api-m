@@ -34,7 +34,7 @@ const Date: React.FC = () => {
       setFact(response.data)
     }
     else {
-      const response = await axios.get(`${NUMBERS_API_URL}/${day}/${month}/date`)
+      const response = await axios.get(`${NUMBERS_API_URL}/${month}/${day}/date`)
       setFact(response.data)
     }
   }
@@ -69,7 +69,7 @@ const Date: React.FC = () => {
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Tab 1</IonTitle>
+            <IonTitle size="large">Date</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonGrid >
@@ -86,6 +86,7 @@ const Date: React.FC = () => {
                     onIonChange={handleChange}
                     clearInput
                   ></IonInput>
+                  <br></br>
                   <IonInput name='month'
                     value={formData.month}
                     placeholder="Pick a month"
@@ -93,12 +94,11 @@ const Date: React.FC = () => {
                     clearInput
                   ></IonInput>
                 </IonItem>
-                {(formData.day === "" && formData.month === "")
-                  ?
-                  <IonButton type='submit'>Random date fact!</IonButton>
-                  :
-                  <IonButton type='submit'>Show me date fact!</IonButton>
-                }
+                <IonButton className='ion-margin-top' type='submit'> 
+                {!formData.day && !formData.month 
+                ? "Random date fact!" 
+                : "Show me date fact!" }
+                </IonButton>
               </form>
             </IonCol>
           </IonRow>

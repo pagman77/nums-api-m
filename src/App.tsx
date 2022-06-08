@@ -10,7 +10,7 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { schoolOutline, calendarNumberOutline, calculator, todayOutline  } from 'ionicons/icons';
+import { schoolOutline, calendarNumberOutline, calculator, todayOutline, home  } from 'ionicons/icons';
 import Math from './pages/Math';
 import Trivia from './pages/Trivia';
 import Date from './pages/Date';
@@ -35,6 +35,7 @@ import './App.css'
 
 /* Theme variables */
 import './theme/variables.css';
+import HomePage from './pages/Home';
 
 setupIonicReact();
 
@@ -43,6 +44,9 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
+          <Route exact path="/home">
+            <HomePage />
+          </Route>
           <Route exact path="/math">
             <Math />
           </Route>
@@ -55,12 +59,17 @@ const App: React.FC = () => (
           <Route path="/year">
             <Year />
           </Route>
+
           <Route exact path="/">
-            <Redirect to="/math" />
+            <Redirect to="/home" />
           </Route>
         </IonRouterOutlet>
 
         <IonTabBar slot="bottom">
+          <IonTabButton tab="home" href="/home">
+          <IonIcon icon={home} />
+            <IonLabel>Home</IonLabel>
+          </IonTabButton>
           <IonTabButton tab="math" href="/math">
           <IonIcon icon={calculator} />
             <IonLabel>Math</IonLabel>

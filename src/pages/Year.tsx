@@ -56,7 +56,7 @@ const Year: React.FC = () => {
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Tab 1</IonTitle>
+            <IonTitle size="large">Year</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonGrid >
@@ -74,12 +74,11 @@ const Year: React.FC = () => {
                     clearInput
                   ></IonInput>
                 </IonItem>
-                {(formData.number === "")
-                  ?
-                  <IonButton type='submit'>Random year Fact!</IonButton>
-                  :
-                  <IonButton type='submit'>Show me the fact!</IonButton>
-                }
+                <IonButton className='ion-margin-top' type='submit'>
+                  {!formData.number
+                    ? "Random math fact!"
+                    : "Show me the fact!"}
+                </IonButton>
               </form>
             </IonCol>
           </IonRow>
