@@ -34,4 +34,6 @@ ion-button {
 
 ion-item {
   --background: rgba(0, 0, 0, 0.2);
+  /* margin-left: 25%;
+  margin-right: 25%; */
 }
