@@ -11,7 +11,7 @@ const Homescreen: React.FC = () => {
   <IonSlide className="ion-text-start ion-padding">
    <div className="slide">
     {/* <h1 id="api-title">Numbers API</h1> */}
-    <IonImg src={"assets/logo-450-120.png"} alt="Numbers API" />
+    <IonImg src={"logo-450-120.png"} alt="Numbers API" />
     {/* <IonImg id="nums-img"src={"assets/background.jpg"} alt="Numbers API" /> */}
     <IonRow id="title-reference">
      <h4 >API REFERENCE</h4>

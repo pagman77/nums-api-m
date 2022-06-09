@@ -1,4 +1,5 @@
-import { useState } from 'react';
+
+import React, { useState } from 'react';
 import {
  IonGrid,
  IonRow,
@@ -15,7 +16,7 @@ import {
  IonAlert
 } from '@ionic/react';
 import './Date.css';
-import { IFormDate } from '../../interfaces';
+import { IFormDate } from '../interfaces';
 import { IonInputCustomEvent } from '@ionic/core';
 import { InputChangeEventDetail } from '@ionic/react';
 import { getDateFact } from '../utils/getDateFact';

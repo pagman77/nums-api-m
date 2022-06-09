@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {
  IonGrid,
  IonRow,
@@ -15,7 +15,7 @@ import {
  IonAlert
 } from '@ionic/react';
 import './Math.css';
-import { IForm } from '../../interfaces';
+import { IForm } from '../interfaces';
 import { IonInputCustomEvent } from '@ionic/core';
 import { InputChangeEventDetail } from '@ionic/react';
 import { getFact } from '../utils/getFact';

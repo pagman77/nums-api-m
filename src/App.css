@@ -1,5 +1,5 @@
 ion-content {
-  background: linear-gradient(rgba(30, 109, 160, 0.8) 0%, #1e6da0 20%),
-      url("../public/assets/background.jpg");
-    margin: 0;
+ background: linear-gradient(rgba(30, 109, 160, 0.8) 0%, #1e6da0 20%),
+  url("/src/assets/background.jpg");
+ margin: 0;
 }

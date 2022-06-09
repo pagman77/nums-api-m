@@ -1,16 +1,17 @@
+import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import {
-  IonApp,
-  IonIcon,
-  IonLabel,
-  IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
-  setupIonicReact
+ IonApp,
+ IonIcon,
+ IonLabel,
+ IonRouterOutlet,
+ IonTabBar,
+ IonTabButton,
+ IonTabs,
+ setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { schoolOutline, calendarNumberOutline, calculator, todayOutline, home  } from 'ionicons/icons';
+import { schoolOutline, calendarNumberOutline, calculator, todayOutline, home } from 'ionicons/icons';
 import Math from './pages/Math';
 import Trivia from './pages/Trivia';
 import Date from './pages/Date';
@@ -31,7 +32,7 @@ import '@ionic/react/css/text-alignment.css';
 import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
-import './App.css'
+import './App.css';
 
 /* Theme variables */
 import './theme/variables.css';
@@ -40,56 +41,56 @@ import HomePage from './pages/Home';
 setupIonicReact();
 
 const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/home">
-            <HomePage />
-          </Route>
-          <Route exact path="/math">
-            <Math />
-          </Route>
-          <Route exact path="/trivia">
-            <Trivia />
-          </Route>
-          <Route path="/date">
-            <Date />
-          </Route>
-          <Route path="/year">
-            <Year />
-          </Route>
+ <IonApp>
+  <IonReactRouter>
+   <IonTabs>
+    <IonRouterOutlet>
+     <Route exact path="/home">
+      <HomePage />
+     </Route>
+     <Route exact path="/math">
+      <Math />
+     </Route>
+     <Route exact path="/trivia">
+      <Trivia />
+     </Route>
+     <Route path="/date">
+      <Date />
+     </Route>
+     <Route path="/year">
+      <Year />
+     </Route>
 
-          <Route exact path="/">
-            <Redirect to="/home" />
-          </Route>
-        </IonRouterOutlet>
+     <Route exact path="/">
+      <Redirect to="/home" />
+     </Route>
+    </IonRouterOutlet>
 
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="home" href="/home">
-          <IonIcon icon={home} />
-            <IonLabel>Home</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="math" href="/math">
-          <IonIcon icon={calculator} />
-            <IonLabel>Math</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="trivia" href="/trivia">
-            <IonIcon icon={schoolOutline} />
-            <IonLabel>Trivia</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="date" href="/date">
-          <IonIcon icon={calendarNumberOutline} />
-            <IonLabel>Date</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="year" href="/year">
-            <IonIcon icon={todayOutline} />
-            <IonLabel>Year</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
+    <IonTabBar slot="bottom">
+     <IonTabButton tab="home" href="/home">
+      <IonIcon icon={home} />
+      <IonLabel>Home</IonLabel>
+     </IonTabButton>
+     <IonTabButton tab="math" href="/math">
+      <IonIcon icon={calculator} />
+      <IonLabel>Math</IonLabel>
+     </IonTabButton>
+     <IonTabButton tab="trivia" href="/trivia">
+      <IonIcon icon={schoolOutline} />
+      <IonLabel>Trivia</IonLabel>
+     </IonTabButton>
+     <IonTabButton tab="date" href="/date">
+      <IonIcon icon={calendarNumberOutline} />
+      <IonLabel>Date</IonLabel>
+     </IonTabButton>
+     <IonTabButton tab="year" href="/year">
+      <IonIcon icon={todayOutline} />
+      <IonLabel>Year</IonLabel>
+     </IonTabButton>
+    </IonTabBar>
+   </IonTabs>
+  </IonReactRouter>
+ </IonApp>
 );
 
 export default App;

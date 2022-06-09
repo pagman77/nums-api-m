@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IFact } from '../../interfaces';
+import { IFact } from '../interfaces';
 
 const NUMBERS_API_URL = "http://numbersapi.com";
 
