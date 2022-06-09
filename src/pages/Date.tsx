@@ -11,7 +11,8 @@ import {
  IonTitle,
  IonToolbar,
  IonItem,
- IonInput
+ IonInput,
+ IonAlert
 } from '@ionic/react';
 import './Date.css';
 import { IFormDate } from '../../interfaces';
@@ -20,10 +21,13 @@ import { InputChangeEventDetail } from '@ionic/react';
 import { getDateFact } from '../utils/getDateFact';
 
 const initialFormData = { day: "", month: "" };
+const defaultMessage = "Click the button below for a random fact, or input a month and a day below for a fact about that date!";
 
 const Date: React.FC = () => {
- const [fact, setFact] = useState("Click button below for random fact!");
+ const [fact, setFact] = useState(defaultMessage);
  const [formData, setFormData] = useState<IFormDate>(initialFormData);
+ const [error, setError] = useState("");
+ const [alert, setAlert] = useState(false);
 
  function handleChange(evt: IonInputCustomEvent<InputChangeEventDetail>) {
   const { name, value } = evt.target;
@@ -35,20 +39,18 @@ const Date: React.FC = () => {
 
  async function handleSubmit(evt: React.SyntheticEvent): Promise<void> {
   evt.preventDefault();
-  try {
-   const date = await getDateFact(formData.day, formData.month);
-   setFact(date);
-   setFormData(initialFormData);
+  const response = await getDateFact(formData.day, formData.month);
+
+  if (response.fact) setFact(response.fact);
+  if (response.error) {
+   setError(response.error);
+   setAlert(true);
   }
-  catch (error) {
-   console.log(error);
-  }
+  setFormData(initialFormData);
  }
 
  return (
   <IonPage>
-   {/* NOTE: removed collapse class, nav bar wasn't showing up on mine, couldn't remember why we had it.*/}
-   {/* <IonHeader collapse="condense"> */}
    <IonHeader >
     <IonToolbar>
      <IonTitle size="large">Date</IonTitle>
@@ -65,14 +67,14 @@ const Date: React.FC = () => {
         <IonItem>
          <IonInput name='day'
           value={formData.day}
-          placeholder="Pick a day"
+          placeholder="Day"
           onIonChange={handleChange}
           clearInput
          ></IonInput>
          <br></br>
          <IonInput name='month'
           value={formData.month}
-          placeholder="Pick a month"
+          placeholder="Month"
           onIonChange={handleChange}
           clearInput
          ></IonInput>
@@ -84,6 +86,13 @@ const Date: React.FC = () => {
         </IonButton>
        </form>
       </IonCol>
+      <IonAlert
+       isOpen={alert}
+       onDidDismiss={() => setAlert(false)}
+       cssClass='my-custom-class'
+       message={error}
+       buttons={['OK']}
+      />
      </IonRow>
     </IonGrid>
    </IonContent>

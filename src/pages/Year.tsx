@@ -11,7 +11,8 @@ import {
  IonTitle,
  IonToolbar,
  IonItem,
- IonInput
+ IonInput,
+ IonAlert
 } from '@ionic/react';
 import './Year.css';
 import { IForm } from '../../interfaces';
@@ -20,10 +21,13 @@ import { InputChangeEventDetail } from '@ionic/react';
 import { getFact } from '../utils/getFact';
 
 const initialFormData = { number: "" };
+const defaultMessage = "Click the button below for random fact, or input a number below for a fact about that year!";
 
 const Year: React.FC = () => {
- const [fact, setFact] = useState("Click button below for random fact!");
+ const [fact, setFact] = useState(defaultMessage);
  const [formData, setFormData] = useState<IForm>(initialFormData);
+ const [error, setError] = useState("");
+ const [alert, setAlert] = useState(false);
 
  function handleChange(evt: IonInputCustomEvent<InputChangeEventDetail>) {
   const { name, value } = evt.target;
@@ -35,14 +39,13 @@ const Year: React.FC = () => {
 
  async function handleSubmit(evt: React.SyntheticEvent): Promise<void> {
   evt.preventDefault();
-  try {
-   const fact = await getFact(formData.number, 'year');
-   setFact(fact);
-   setFormData(initialFormData);
+  const response = await getFact(formData.number, 'year');
+  if (response.fact) setFact(response.fact);
+  if (response.error) {
+   setError(response.error);
+   setAlert(true);
   }
-  catch (error) {
-   console.log(error);
-  }
+  setFormData(initialFormData);
  }
 
  return (
@@ -74,6 +77,13 @@ const Year: React.FC = () => {
           : "Show me the fact!"}
         </IonButton>
        </form>
+       <IonAlert
+        isOpen={alert}
+        onDidDismiss={() => setAlert(false)}
+        cssClass='my-custom-class'
+        message={error}
+        buttons={['OK']}
+       />
       </IonCol>
      </IonRow>
     </IonGrid>

@@ -11,7 +11,8 @@ import {
  IonTitle,
  IonToolbar,
  IonInput,
- IonItem
+ IonItem,
+ IonAlert
 } from '@ionic/react';
 import './Math.css';
 import { IForm } from '../../interfaces';
@@ -20,10 +21,13 @@ import { InputChangeEventDetail } from '@ionic/react';
 import { getFact } from '../utils/getFact';
 
 const initialFormData = { number: "" };
+const defaultMessage = "Click the button below for random fact, or input a number below for a math fact about that number!";
 
 const Math: React.FC = () => {
- const [fact, setFact] = useState("Click button below for random fact!");
+ const [fact, setFact] = useState(defaultMessage);
  const [formData, setFormData] = useState<IForm>(initialFormData);
+ const [error, setError] = useState("");
+ const [alert, setAlert] = useState(false);
 
  function handleChange(evt: IonInputCustomEvent<InputChangeEventDetail>) {
   const { name, value } = evt.target;
@@ -35,20 +39,19 @@ const Math: React.FC = () => {
 
  async function handleSubmit(evt: React.SyntheticEvent): Promise<void> {
   evt.preventDefault();
-  try {
-   const fact = await getFact(formData.number, 'math');
-   setFact(fact);
-   setFormData(initialFormData);
+  const response = await getFact(formData.number, 'math');
+
+  if (response.fact) setFact(response.fact);
+  if (response.error) {
+   setError(response.error);
+   setAlert(true);
   }
-  catch (error) {
-   console.log(error);
-  }
+  setFormData(initialFormData);
+
  }
 
  return (
   <IonPage>
-   {/* NOTE: removed collapse class, nav bar wasn't showing up on mine, couldn't remember why we had it.*/}
-   {/* <IonHeader collapse="condense"> */}
    <IonHeader >
     <IonToolbar>
      <IonTitle size="large">Math</IonTitle>
@@ -76,6 +79,13 @@ const Math: React.FC = () => {
           : "Show me the fact!"}
         </IonButton>
        </form>
+       <IonAlert
+        isOpen={alert}
+        onDidDismiss={() => setAlert(false)}
+        cssClass='my-custom-class'
+        message={error}
+        buttons={['OK']}
+       />
       </IonCol>
      </IonRow>
     </IonGrid>
