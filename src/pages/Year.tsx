@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import axios from "axios";
 import {
  IonGrid,
  IonRow,
@@ -34,7 +33,7 @@ const Year: React.FC = () => {
   }));
  }
 
- async function handleSubmit(evt: any): Promise<void> {
+ async function handleSubmit(evt: React.SyntheticEvent): Promise<void> {
   evt.preventDefault();
   try {
    const fact = await getFact(formData.number, 'year');
@@ -48,9 +47,7 @@ const Year: React.FC = () => {
 
  return (
   <IonPage>
-     {/* NOTE: removed collapse class, nav bar wasn't showing up on mine, couldn't remember why we had it.*/}
-     {/* <IonHeader collapse="condense"> */}
-     <IonHeader >
+   <IonHeader >
     <IonToolbar>
      <IonTitle size="large">Year</IonTitle>
     </IonToolbar>
