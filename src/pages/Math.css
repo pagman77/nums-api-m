@@ -29,11 +29,17 @@ ion-button {
   color: #f0f3f5;
   --background: #1170af;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-  /* --ion-margin-top: 20px; */
 }
 
 ion-item {
-  --background: rgba(0, 0, 0, 0.2);
-  /* margin-left: 25%;
-  margin-right: 25%; */
+  --background: rgba(0, 0, 0, 0.3);
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 5px;
+}
+
+ion-text {
+    /* --background: rgba(0, 0, 0, 0.2); */
+    padding: 10%;
+    border-radius: 5px;
 }

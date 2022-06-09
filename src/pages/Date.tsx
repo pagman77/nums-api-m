@@ -60,7 +60,9 @@ const Date: React.FC = () => {
 
  return (
   <IonPage>
-   <IonHeader collapse="condense">
+     {/* NOTE: removed collapse class, nav bar wasn't showing up on mine, couldn't remember why we had it.*/}
+     {/* <IonHeader collapse="condense"> */}
+     <IonHeader >
     <IonToolbar>
      <IonTitle size="large">Date</IonTitle>
     </IonToolbar>
@@ -69,7 +71,7 @@ const Date: React.FC = () => {
     <IonGrid >
      <IonRow  >
       <IonCol size='12'>
-       <IonText ><p>{fact}</p></IonText>
+       <IonText ><p className='fact-bg'>{fact}</p></IonText>
       </IonCol>
       <IonCol size='12'>
        <form onSubmit={handleSubmit}>
